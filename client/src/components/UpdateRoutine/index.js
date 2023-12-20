@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { updateRoutine } from '../../services/apiService'
-import Axios from 'axios';
+// import Axios from 'axios';
 import './UpdateRoutine.css'
 
 

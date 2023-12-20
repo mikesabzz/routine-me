@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { createSign } from 'crypto';
+// import { createSign } from 'crypto';
 import {Redirect} from 'react-router'
 
 class SignUpForm extends Component {
@@ -71,7 +71,7 @@ class SignUpForm extends Component {
                         onChange={this.handleTextInput}
                         value={this.state.password} />
                     </div>
-                    <button className="sign-up-button">Sign up</button>
+                    <button disabled={true} className="sign-up-button">Sign up</button>
                 </form>
             </div>
         )

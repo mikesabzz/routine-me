@@ -1,7 +1,7 @@
 import React from 'react';
 import './SingleRoutine.css';
 import {deleteRoutine} from '../../services/apiService';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom'; 
 
 const  SingleRoutine = (props) =>  {
 

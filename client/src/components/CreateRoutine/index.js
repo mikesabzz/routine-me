@@ -10,19 +10,19 @@ class CreateRoutine extends React.Component {
 
         this.props = props
         this.state = {
-            created: false,
-            name: '',
-            userId: props.user.id
+          created: false,
+          name: '',
+          userId: props.user.id,
+          startTime: '',
+          endTime: '',
+          description: '',
         }
     }
 
 
   handleChange = (e) => {
-    const currentElement = e.target
-    const { name, value } = currentElement
-    const newState = {};
-    newState[name] = value
-    this.setState(newState)
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   }
 
   handleSubmit = async (e) => {
@@ -44,9 +44,9 @@ class CreateRoutine extends React.Component {
                     <h1>Create Your Routine:</h1>
                     <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                         <label for="startTime">Start Time (am/pm):</label>
-                        <input name="startTime" type="text" />
+                        <input name="startTime" type="time" />
                         <label for="endTime">End Time (am/pm):</label>
-                        <input name="endTime" type="text" />
+                        <input name="endTime" type="time" />
                         <label for="description">Activity:</label>
                         <input name="description" type="text" />
                         <div className="submit"><input type = "submit" /></div> 

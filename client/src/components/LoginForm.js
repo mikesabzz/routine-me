@@ -75,7 +75,7 @@ handleTextInput = (event) => {
                         value={this.state.password}
                          />
                     </div>
-                    <button disabled={true}>Login</button>
+                    <button>Login</button>
                 </form>
             </div>
             )

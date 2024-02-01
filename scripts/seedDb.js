@@ -1,13 +1,16 @@
 const { User, Routine }  = require('../models/index')
-const bcrypt = require('bcrypt')
+const { db } = require('../models/index')
+// const bcrypt = require('bcrypt')
+// const BCRYPT_SALT_ROUNDS = 12
 
 const seedDb = async () => {
   try {
+    console.log('Start seeding...');
     // clear out data in tables specified below
     await User.destroy({
       where: {}
     })
-
+    console.log('Users cleared.');
   
     // add records to tables specified below
     const tom = await User.create({
@@ -92,14 +95,16 @@ const seedDb = async () => {
     await routine9.setUser(tiger)
 
 
+    console.log('Database seeded successfully!');
   } catch(e) {
-    console.log(e);
+    console.error('Error seeding database:', e);
   }
 }
 
 const run = async () => {
   try {
-    await seedDb()
+    await db.sync();
+    await seedDb();
   } catch(e) {
     console.log(e)
   } finally {

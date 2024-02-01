@@ -28,13 +28,22 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
 
   appRouter.get('/routine/users/famous', async (req, res) => {
     try{
-      console.log('hello')
       const users = await User.findAll({
         include: [{
           model: Routine
         }]
   
       })
+      res.send(users)
+
+    }catch(error){
+
+      throw error
+    }
+  })
+  appRouter.get('/routine/users/:user_id', async (req, res) => {
+    try{
+      const users = await User.findByPk(req.params.user_id);
       res.send(users)
 
     }catch(error){
@@ -52,7 +61,6 @@ appRouter.get('/profile', passport.authenticate('jwt', { session: false}),
     } catch(e) {
       console.log(e)
     }
-    //// 
   
   })
   

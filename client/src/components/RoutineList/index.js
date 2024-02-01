@@ -9,34 +9,31 @@ class RoutineList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data:[],
-            routines:[]
+            dataFamous: [], 
+            dataNormal: [] 
         }
     }
 
     async componentDidMount () {
         // Also get the logged in user and display below the famous people
         await this.getFamous() 
-        await this.getNormal ()
+        await this.getNormal()
+
     }
 
     getFamous = async () => {
-        const data = await getFamousPerson()
-        //  console.log(data)
-        this.setState({data})
-        console.log('getfamous', data)
+        const dataFamous = await getFamousPerson()
+        this.setState({dataFamous})
     }
 
     getNormal = async () => {
-        const data = await getNormalPerson()
-        this.setState({data})
-        
+        const dataNormal = await getNormalPerson()
+        this.setState({dataNormal})   
     }
 
-    renderPerson= () => {
-        if(this.state.data){
-            return this.state.data.map(user =>{
-                
+    renderPerson = () => {
+        if(this.state.dataFamous){
+            return this.state.dataFamous.map(user =>{
                 return (
                     <h2 key={user.id}><Link className ="peoples-list" to={{
                         pathname:`/dashboard/routine/${user.id}`,
@@ -47,13 +44,9 @@ class RoutineList extends React.Component {
         }
     }
 
-    renderNormalPerson= () => {
-       
-        if(this.state.data){
-            return this.state.data.map(user =>{
-                console.log('rendernormalperson',user)
-                // console.log(this.state)
-                console.log('RNP props',this.props)
+    renderNormalPerson = () => {
+        if(this.state.dataNormal){
+            return this.state.dataNormal.map(user =>{
                 return (
                     <li key={user.id}><Link to={{
                         pathname:`/dashboard/routine/${user.id}`,

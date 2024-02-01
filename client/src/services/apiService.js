@@ -1,15 +1,26 @@
 import axios from 'axios'
-const BASE_URL = process.env.API_URL || 'http://localhost:8001'
+// const BASE_URL = process.env.API_URL || 'http://localhost:4567'
+const BASE_URL = 'http://localhost:4567'
 
-const JWT_TOKEN = localStorage.getItem('token')
+// const JWT_TOKEN = localStorage.getItem('token')
 
 const apiClient = axios.create({
     baseURL: BASE_URL,
     headers: {
-        'Authorization': `Bearer ${JWT_TOKEN}`
-    
+        'Content-Type': 'application/json',
     }
+    // headers: {
+    //     'Authorization': `Bearer ${JWT_TOKEN}`
+    // }
 })
+
+apiClient.interceptors.request.use((config) => {
+    const JWT_TOKEN = localStorage.getItem('token');
+    if (JWT_TOKEN) {
+      config.headers['Authorization'] = `Bearer ${JWT_TOKEN}`;
+    }
+    return config;
+  });
 
 export const login = async (data) => {
     try {
@@ -101,29 +112,20 @@ export const getFamousPerson = async ()=> {
     
         const response = await apiClient.get('/app/routine/users/famous')
         // const {user} = response.data
-        console.log(getFamousPerson)
-
         // return user
-        console.log(response)
         return response.data
     } catch(e) {
         throw e
     }
 }
 
-export const getNormalPerson = async (id)=> {
+export const getNormalPerson = async ()=> {
     try {
-    
-        const response = await apiClient.get(`/app/routine/users/${id}`)
-        const {user} = response.data
-        console.log(this.state)
-        console.log(this.props)
-        console.log(user)
-        // return user
-        
-        console.log(response)
-
-        return response.data
+        const response = await apiClient.get(`/app/routine/users/famous`)
+        const famousUsers = response.data
+        const nonFamousUser = famousUsers.find(user => !user.isfamous);
+ 
+        return nonFamousUser;
     } catch(e){
         throw e
     }

@@ -5,19 +5,14 @@ const bcrypt = require('bcrypt')
 const dotenv = require("dotenv");
 
 dotenv.config();
-const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, SALT_ROUNDS } = process.env;
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {}
 
-if (!DB_USERNAME || !DB_PASSWORD || !DB_HOST || !DB_DATABASE || !SALT_ROUNDS) {
-  console.error('One or more required environment variables are missing.');
-  process.exit(1);
-}
-
-// connection to the database
 const db = new Sequelize({
   database: DB_DATABASE,
   username: DB_USERNAME,
   password: DB_PASSWORD,
   host: DB_HOST,
+  // port: PORT ? parseInt(DB_PORT, 10) : 4567,
   dialect: "postgres",
   dialectModule: require("pg"),
   dialectOptions: {
@@ -27,7 +22,7 @@ const db = new Sequelize({
     },
   },
   logging: console.log,
-});
+})
 // const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/routine_me'), {
 //   database: "routine_me",
 //   dialect: 'postgres',

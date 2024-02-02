@@ -6,8 +6,7 @@ authRouter.post('/login', (req, res, next) => {
   passport.authenticate('login', async (err, user, info) => {
     try {
       if (err || !user) {
-       
-        const error = new Error(error)
+        const error = new Error(error);
         return next(error)
       }
 

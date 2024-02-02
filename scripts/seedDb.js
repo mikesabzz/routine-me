@@ -1,6 +1,6 @@
 const { User, Routine }  = require('../models/index')
 const { db } = require('../models/index')
-// const bcrypt = require('bcrypt')
+// const bcrypt = require('bcryptjs')
 // const BCRYPT_SALT_ROUNDS = 12
 
 const seedDb = async () => {

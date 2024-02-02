@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const UserModel = require('./user')
 const RoutineModel = require('./Routine')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const dotenv = require("dotenv");
 
 dotenv.config();

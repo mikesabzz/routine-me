@@ -51,7 +51,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message})
 })
 app.use(express.static(path.join(__dirname, './client/build')));
-
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
 if (process.env.NODE_ENV == "production") {

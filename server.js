@@ -24,7 +24,6 @@ const corsOptions = {
 // configure middleware
 app.use(cors(corsOptions))
 app.use(logger('dev'))
-
 // parse application/x-www-form-urlencoded
 // for easier testing with Postman or plain HTML forms
 app.use(bodyParser.urlencoded({

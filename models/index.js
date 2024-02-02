@@ -2,18 +2,35 @@ const Sequelize = require('sequelize')
 const UserModel = require('./user')
 const RoutineModel = require('./Routine')
 const bcrypt = require('bcrypt')
+const dotenv = require("dotenv");
+
+dotenv.config();
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {};
 
 // connection to the database
-const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/routine_me'), {
-  database: "routine_me",
-  dialect: 'postgres',
-  define: {
-    underscored: true,
-    returning: true
-  }
-})
-
-
+const db = new Sequelize({
+  database: DB_DATABASE,
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
+  host: DB_HOST,
+  dialect: "postgres",
+  dialectModule: require("pg"),
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+  logging: console.log,
+});
+// const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/routine_me'), {
+//   database: "routine_me",
+//   dialect: 'postgres',
+//   define: {
+//     underscored: true,
+//     returning: true
+//   }
+// })
 
 
 const User = UserModel(db, Sequelize);

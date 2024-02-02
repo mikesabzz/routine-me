@@ -15,9 +15,15 @@ const passport = require('passport')
 const PORT = process.env.PORT || 4567
 // initializing the express app
 const app = express()
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
 
 // configure middleware
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(logger('dev'))
 
 // parse application/x-www-form-urlencoded
@@ -45,8 +51,8 @@ app.get('/error', function(req, res){
 });
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
-// if (process.env.NODE_ENV == "production")
-if (process.env.NODE_ENV == "development") {
+if (process.env.NODE_ENV == "production") {
+// if (process.env.NODE_ENV == "development") {
   app.use('*', (req, res) => res.sendFile(path.join(__dirname, './client/build', "index.html")));
 }
 

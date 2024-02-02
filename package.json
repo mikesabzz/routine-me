@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "db:init": "dropdb --if-exists routine_me && createdb routine_me",
+    "db:reset": "node ./scripts/resetDb.js",
+    "db:seed": "node ./scripts/seedDb.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
@@ -23,13 +30,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "db:init": "dropdb --if-exists routine_me && createdb routine_me",
-    "db:reset": "node ./scripts/resetDb.js",
-    "db:seed": "node ./scripts/seedDb.js"
   },
   "repository": {
     "type": "git",

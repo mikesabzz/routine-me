@@ -55,9 +55,9 @@ app.use(express.static(path.join(__dirname, './client/build')));
 // In production, any request that doesn't match a previous route
 // should send the front-end application, which will handle the route.
 // if (process.env.NODE_ENV == "production") {
-// if (process.env.NODE_ENV == "development") {
-//   app.use('*', (req, res) => res.sendFile(path.join(__dirname, './client/build', "index.html")));
-// }
+if (process.env.NODE_ENV == "development") {
+  app.use('*', (req, res) => res.sendFile(path.join(__dirname, './client/build', "index.html")));
+}
 
 /*
 // Generic error handler

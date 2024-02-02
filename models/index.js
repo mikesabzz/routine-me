@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const dotenv = require("dotenv");
 
 dotenv.config();
-const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {}
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {};
 
 const db = new Sequelize({
   database: DB_DATABASE,
@@ -22,7 +22,7 @@ const db = new Sequelize({
     },
   },
   logging: console.log,
-})
+});
 // const db = new Sequelize((process.env.DATABASE_URL || 'postgres://localhost:5432/routine_me'), {
 //   database: "routine_me",
 //   dialect: 'postgres',

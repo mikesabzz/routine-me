@@ -17,7 +17,6 @@ class SignUpForm extends Component {
         e.preventDefault()
         const { name, email, password } = this.state
         const  { handleSignUp } = this.props;
-        console.log(this.props);
 
         try {
 
@@ -71,7 +70,7 @@ class SignUpForm extends Component {
                         onChange={this.handleTextInput}
                         value={this.state.password} />
                     </div>
-                    <button disabled={true} className="sign-up-button">Sign up</button>
+                    <button className="sign-up-button">Sign up</button>
                 </form>
             </div>
         )

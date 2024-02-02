@@ -7,29 +7,36 @@
   border-radius: 3%;
   color: white;
   margin: 20% 0 15% 20%;
-  }
-  .sign-form-title {
+}
+.sign-form-title {
+  display: flex;
+  justify-content: center;
+}
+.sign-up-form input {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 3px;
+  padding: 5px;
+  display: block;
+  border: 1px solid rgb(8, 8, 8);
+}
+.sign-up-button{
+  font-size: 18px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5%;
+}
+@media (max-width: 768px) {
+  .signup {
     display: flex;
     justify-content: center;
-
-    
-  }
-
-  .sign-up-form input {
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    border-radius: 3px;
-    padding: 5px;
-    display: block;
-    border: 1px solid rgb(8, 8, 8);
-  }
-
-
-  .sign-up-button{
-    font-size: 18px;
-    margin-top: 10px;
     padding: 10px;
-    border-radius: 5%;
+    background-color: rgb(0, 0, 0, .2);
+    border-radius: 3%;
+    color: white;
+    margin: 20% 0 20% 0;
+    width: auto;
   }
+}
   

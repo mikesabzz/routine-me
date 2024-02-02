@@ -13,7 +13,6 @@ body {
   background-size: 400% 400%;
   position: relative;
   animation: change 12s ease-in infinite;
-
 }
 
 @keyframes change {
@@ -121,5 +120,27 @@ nav button:hover {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .App {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
+  .title {
+    font-size: 36px;
+    text-align: center; 
+  }
 
+  .title-description {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+}

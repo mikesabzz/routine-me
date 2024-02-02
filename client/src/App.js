@@ -22,14 +22,16 @@ class App extends React.Component {
 
   async componentDidMount() {
     try {
-      const fetchUser = await getProfile();
+      if (authService.isAuthenticated()) {
+        const fetchUser = await getProfile();
 
-      this.setState((state) => {
-        return {
-          isSignedIn: authService.isAuthenticated(),
-          user: fetchUser,
-        };
-      });
+        this.setState((state) => {
+          return {
+            isSignedIn: true,
+            user: fetchUser,
+          };
+        });
+      }
     } catch (e) {
       throw e;
     }

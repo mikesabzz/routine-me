@@ -1,8 +1,5 @@
 import axios from 'axios'
-// const BASE_URL = process.env.API_URL || 'http://localhost:4567'
-const BASE_URL = 'http://localhost:4567'
-
-// const JWT_TOKEN = localStorage.getItem('token')
+const BASE_URL = process.env.API_URL || 'https://routine-me.vercel.app'
 
 const apiClient = axios.create({
     baseURL: BASE_URL,
@@ -98,10 +95,8 @@ export const getProfile = async () => {
     try {
         const response = await apiClient.get('/app/profile')
         const {user} = response.data
-        console.log(getProfile)
 
         return user
-
     } catch(e) {
         throw e
     }

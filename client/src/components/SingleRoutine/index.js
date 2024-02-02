@@ -29,7 +29,7 @@ const SingleRoutine = (props) => {
               {routine.description}
             </div>
             {localStorage.getItem("userId") == routine.userId ? (
-              <><div>
+              <><div className="buttons-container">
                 <button
                   className="update-button"
                   onClick={() => props.history.push("/dashboard/routine/:routine_id/update", {
@@ -38,7 +38,7 @@ const SingleRoutine = (props) => {
                 >
                   Update
                 </button>
-              </div><br /><div>
+              
                   <button
                     className="delete-button"
                     onClick={() => handleDelete(routine.id)}

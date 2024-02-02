@@ -5,7 +5,12 @@ const bcrypt = require('bcrypt')
 const dotenv = require("dotenv");
 
 dotenv.config();
-const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE } = process.env || {};
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, SALT_ROUNDS } = process.env;
+
+if (!DB_USERNAME || !DB_PASSWORD || !DB_HOST || !DB_DATABASE || !SALT_ROUNDS) {
+  console.error('One or more required environment variables are missing.');
+  process.exit(1);
+}
 
 // connection to the database
 const db = new Sequelize({

@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 4567
 // initializing the express app
 const app = express()
 const corsOptions = {
-  origin: "http://routine-me.surge.sh",
+  origin: "https://routine-me.surge.sh",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   credentials: true,
   optionsSuccessStatus: 204,
